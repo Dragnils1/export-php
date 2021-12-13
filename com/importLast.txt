@@ -1,0 +1,125 @@
+<!-- <?php 
+
+require 'core/config.php';
+require 'core/db.php';
+
+if(isset($_POST))
+{
+	$cols = [
+		'id',
+		'uid',
+		'fav',
+		'fav_date',
+		'comp',
+		'firstname',
+		'lastname',
+		'gender',
+		'city',
+		'birthday',
+		'year',
+		'birthyear',
+		'zodiak',
+		'langlove',
+		'langlove2',
+		'familystatus',
+		'phone',
+		'vk',
+		'helptext',
+		'targetsearch',
+		'targetsearchtext',
+		'about',
+		'report',
+		'height',
+		'weight',
+		'inst',
+		'fb',
+		'ok',
+		'email',
+		'pass',
+		'dateofend',
+		'source',
+		'source_type',
+		'images',
+		'registermonth',
+		'smoke',
+		'children',
+		'birthdaychild1',
+		'birthdaychild2',
+		'birthdaychild3',
+		'birthdaychild4',
+		'lastlove',
+		'lastzodiak',
+		'reg_date',
+		'last_modify',
+		'user_InNum',
+		'user_OutNum',
+		'comment',
+		'vip',
+		'defer',
+		'status',
+		'role',
+	];
+
+    // $file = fopen($_FILES['file']['tmp_name'], "r");
+
+    // echo sizeof(fgetcsv($file, 1000, ";"));
+
+    if($_POST['clear'] == 'yes')
+    	DB::querySet("TRUNCATE TABLE users");
+
+    if(isset($_FILES['file']))
+    {
+    	$limit = 37;
+
+	    if ($file = fopen($_FILES['file']['tmp_name'], "r")) {
+
+	    $separator = sizeof(fgetcsv($file, 1000, ";")) < 2 ? ',' : ';';
+		
+
+	    while ($data = fgetcsv($file, 1000, $separator)) {
+	  		
+
+	    	foreach ($data as $index => $cell) {
+				// echo $cell;
+	    		$str .= $cols[$index] . " = '" . $cell . "', ";
+
+				// echo $str;
+
+	    		if($index == $limit)
+	    		{
+	    			$All[] = $str ;
+	    			$str = '';
+	    		}
+	    	}
+
+	        
+	    }
+		$data = fgetcsv($file, 1000, $separator);
+		foreach($data as $i => $ce) {
+			echo $ce;
+		}
+
+	    fclose($file);
+
+	    array_shift($All);
+
+	    foreach ($All as $str) {
+			// echo $str;
+			
+	    	DB::setData(insert, "users SET " . $str);
+	    }
+
+	    echo 'ok';
+    }
+
+
+
+    
+}
+
+
+}
+
+
+
+?> -->
